@@ -10,13 +10,19 @@ Python, Django, DRF, JWT + Djoser
 
 ### Клонировать репозиторий и перейти в него в командной строке:
 
-```git clone https://github.com/EvZhi/api_final_yatube.git```
+```
+git clone https://github.com/EvZhi/api_final_yatube.git
+```
 
-```cd <ваша_папка>```
+```
+cd <ваша_папка>
+```
 
 ### Cоздать и активировать виртуальное окружение:
 
-```python3 -m venv env```
+```
+python3 -m venv env
+```
 
 ```source env/bin/activate```
 
