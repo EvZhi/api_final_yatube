@@ -1,4 +1,4 @@
-## Проект «API для Yatube»
+# Проект «API для Yatube»
 
 API для Yatube представляет собой проект социальной сети, в котором возможно обрабатывать запросы к постам, группам, комментариям.
 
@@ -8,44 +8,45 @@ Python, Django, DRF, JWT + Djoser
 
 ## Установка:
 
-```
-Клонировать репозиторий и перейти в него в командной строке:
+### Клонировать репозиторий и перейти в него в командной строке:
 
-git clone https://github.com/EvZhi/api_final_yatube.git
+```git clone https://github.com/EvZhi/api_final_yatube.git```
 
-cd <ваша_папка>
-```
+```cd <ваша_папка>```
 
-Cоздать и активировать виртуальное окружение:
+### Cоздать и активировать виртуальное окружение:
 
-python3 -m venv env
+```python3 -m venv env```
 
-source env/bin/activate
+```source env/bin/activate```
 
-Установить зависимости из файла requirements.txt:
+### Установить зависимости из файла requirements.txt:
 
-python3 -m pip install --upgrade pip
+```python3 -m pip install --upgrade pip```
 
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
-Выполнить миграции:
+### Выполнить миграции:
 
-python3 manage.py migrate
+```python3 manage.py migrate```
 
-Запустить проект:
+### Запустить проект:
 
-python3 manage.py runserver
+```python3 manage.py runserver```
 
 ## Описание
+
 Здесь вы можете совершать определенные действия с обьектами:
-Endpoint	Object	Methods	Description
-/api/v1/posts/	Post	GET, POST	Получаем список постов и создаем пост.
-/api/v1/posts/{id}/	Post	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный пост.
-/api/v1/posts/{post_id}/comments/	Comment	GET, POST	Получаем список комментариев и создаем комментарий к конкретному посту
-/api/v1/posts/{post_id}/comments/{id}/	Comment	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный комментарий и конкретному посту.
-/api/v1/groups/	Group	GET	Получаем список групп. Только чтоние
-/api/v1/groups/{id}/	Group	GET	Получаем конкретную группу. Только чтоние
-/api/v1/follow/	Follow	GET, POST	Получаем все подписки пользователя сделавшего GET запрос. Подписываемся на другого пользователя. Подписыватся на себя безсмысленно
+|Endpoint	Object	Methods	Description |
+|---------------------------------------|
+|/api/v1/posts/	                        | Post	GET, POST	Получаем список постов и создаем пост.
+|---------------------------------------|
+|/api/v1/posts/{id}/	                | Post	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный пост.
+|/api/v1/posts/{post_id}/comments/	    | Comment	GET, POST	Получаем список комментариев и создаем комментарий к конкретному посту
+|/api/v1/posts/{post_id}/comments/{id}/	|Comment	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный комментарий и конкретному посту.
+|/api/v1/groups/	Group	GET	Получаем список групп. Только чтоние
+|/api/v1/groups/{id}/	Group	GET	Получаем конкретную группу. Только чтоние
+|/api/v1/follow/	Follow	GET, POST	Получаем все подписки пользователя сделавшего GET запрос. Подписываемся на другого пользователя. Подписыватся на себя безсмысленно
 /api/v1/jwt/create/	Token	POST	Получаем токен
 /api/v1/jwt/refresh/	Token	POST	Обновляем токен
 /api/v1/jwt/verify/	Token	POST	Проверяем токен
