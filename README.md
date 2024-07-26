@@ -36,22 +36,22 @@ Python, Django, DRF, JWT + Djoser
 
 ## Описание
 
-Здесь вы можете совершать определенные действия с обьектами:
-|Endpoint	Object	Methods	Description |
-|---------------------------------------|
-|/api/v1/posts/	                        | Post	GET, POST	Получаем список постов и создаем пост.
-|---------------------------------------|
-|/api/v1/posts/{id}/	                | Post	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный пост.
-|/api/v1/posts/{post_id}/comments/	    | Comment	GET, POST	Получаем список комментариев и создаем комментарий к конкретному посту
-|/api/v1/posts/{post_id}/comments/{id}/	|Comment	GET, PUT, PATCH, DELETE	Получаем, редактируем, заменяем, отдельный комментарий и конкретному посту.
-|/api/v1/groups/	Group	GET	Получаем список групп. Только чтоние
-|/api/v1/groups/{id}/	Group	GET	Получаем конкретную группу. Только чтоние
-|/api/v1/follow/	Follow	GET, POST	Получаем все подписки пользователя сделавшего GET запрос. Подписываемся на другого пользователя. Подписыватся на себя безсмысленно
-/api/v1/jwt/create/	Token	POST	Получаем токен
-/api/v1/jwt/refresh/	Token	POST	Обновляем токен
-/api/v1/jwt/verify/	Token	POST	Проверяем токен
-Примеры ответа
-GET запрос
+### Здесь вы можете совершать определенные действия с обьектами:
+|Endpoint                              	| Objec   | Methods	                | Description 
+|/api/v1/posts/	                        | Post	  | GET, POST	            | Получаем список постов и создаем пост.|
+|/api/v1/posts/{id}/	                | Post	  | GET, PUT, PATCH, DELETE	| Получаем, редактируем, заменяем, отдельный пост.
+|/api/v1/posts/{post_id}/comments/	    | Comment |	GET, POST	            | Получаем список комментариев и создаем комментарий к конкретному посту
+|/api/v1/posts/{post_id}/comments/{id}/	| Comment |	GET, PUT, PATCH, DELETE	| Получаем, редактируем, заменяем, отдельный комментарий и конкретному посту.
+|/api/v1/groups/	                    | Group	  | GET	                    | Получаем список групп. Только чтоние
+|/api/v1/groups/{id}/	                | Group	  | GET	                    | Получаем конкретную группу. Только чтоние
+|/api/v1/follow/	                    | Follo   | GET, POST	            |Получаем все подписки пользователя сделавшего GET запрос. Подписываемся на другого пользователя. Подписыватся на себя безсмысленно
+|/api/v1/jwt/create/	                | Token	  | POST	                |Получаем токен
+|/api/v1/jwt/refresh/	                | Token	  | POST	                |Обновляем токен
+|/api/v1/jwt/verify/	                | Token	  | POST	                |Проверяем токен
+
+## Примеры ответа:
+
+### GET запрос
 /api/v1/posts/
 
 {
