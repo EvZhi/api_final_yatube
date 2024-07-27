@@ -8,7 +8,9 @@ class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
-        fields = '__all__'
+        fields = (
+            'id', 'text', 'pub_date', 'author', 'image', 'group', 'comments'
+        )
         model = Post
 
 
@@ -18,14 +20,14 @@ class CommentSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        fields = '__all__'
+        fields = ('id', 'author', 'post', 'text', 'created')
         model = Comment
         read_only_fields = ('post',)
 
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = '__all__'
+        fields = ('id', 'title', 'slug', 'description', 'posts')
         model = Group
 
 
@@ -44,7 +46,7 @@ class FollowSerializer(serializers.ModelSerializer):
         request = self.context.get('request')
         if value == request.user:
             raise serializers.ValidationError(
-                'Нельзя подписаться на самого себя!'
+                'Нельзя подписаться на самого себя.'
             )
         return value
 

@@ -1,8 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import filters, mixins, viewsets
 from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.permissions import (IsAuthenticated,
-                                        IsAuthenticatedOrReadOnly)
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from api.permissions import AuthorPermission
 from api.serializers import (CommentSerializer, FollowSerializer,
@@ -13,7 +12,7 @@ from posts.models import Follow, Group, Post
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (AuthorPermission, IsAuthenticatedOrReadOnly)
+    permission_classes = (AuthorPermission,)
     pagination_class = LimitOffsetPagination
 
     def perform_create(self, serializer):
@@ -23,25 +22,23 @@ class PostViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (AllowAny,)
 
 
 class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
-    permission_classes = (AuthorPermission, IsAuthenticatedOrReadOnly)
+    permission_classes = (AuthorPermission,)
+
+    def get_post_object_or_404(self):
+        return get_object_or_404(Post, id=self.kwargs['post_id'])
 
     def get_queryset(self):
-        post = get_object_or_404(
-            Post, id=self.kwargs['post_id']
-        )
-        return post.comments.all()
+        return self.get_post_object_or_404().comments.all()
 
     def perform_create(self, serializer):
         serializer.save(
             author=self.request.user,
-            post=get_object_or_404(
-                Post, id=self.kwargs['post_id']
-            )
+            post=self.get_post_object_or_404()
         )
 
 
@@ -50,7 +47,6 @@ class FollowViewSet(
     mixins.ListModelMixin,
     viewsets.GenericViewSet
 ):
-    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     permission_classes = (IsAuthenticated,)
     filter_backends = (filters.SearchFilter,)
